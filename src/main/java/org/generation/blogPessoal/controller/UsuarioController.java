@@ -41,3 +41,5 @@ public class UsuarioController {
 	public ResponseEntity<List<Usuario>> GetAll() {
 		return ResponseEntity.ok(usuarioService.listarUsuarios());
 }
+	
+}
