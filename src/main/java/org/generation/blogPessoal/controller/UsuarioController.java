@@ -1,5 +1,6 @@
 package org.generation.blogPessoal.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.generation.blogPessoal.model.Usuario;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +32,12 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario) {	
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(usuarioService.CadastrarUsuario(usuario));
 	}
 
-
+	@GetMapping("/all")
+	public ResponseEntity<List<Usuario>> GetAll() {
+		return ResponseEntity.ok(usuarioService.listarUsuarios());
 }
